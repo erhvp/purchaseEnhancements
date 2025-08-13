@@ -1,0 +1,173 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2025-08-05 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "general_settings_section",
+        "enable_purchase_history",
+        "history_cache_duration",
+        "max_history_items",
+        "column_break_1",
+        "enable_auto_reminders",
+        "default_follow_up_days",
+        "reminder_settings_section",
+        "priority_thresholds_section",
+        "critical_priority_percentage",
+        "high_priority_percentage",
+        "medium_priority_percentage",
+        "column_break_2",
+        "critical_overdue_days",
+        "high_overdue_days",
+        "escalation_settings_section",
+        "auto_escalate_enabled",
+        "send_daily_digest",
+        "notification_settings_section",
+        "enable_email_notifications",
+        "digest_recipients",
+        "notification_routing_rules"
+    ],
+    "fields": [
+        {
+            "fieldname": "general_settings_section",
+            "fieldtype": "Section Break",
+            "label": "General Settings"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_purchase_history",
+            "fieldtype": "Check",
+            "label": "Enable Purchase History Widget"
+        },
+        {
+            "default": "600",
+            "fieldname": "history_cache_duration",
+            "fieldtype": "Int",
+            "label": "History Cache Duration (seconds)"
+        },
+        {
+            "default": "5",
+            "fieldname": "max_history_items",
+            "fieldtype": "Int",
+            "label": "Max History Items to Show"
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_auto_reminders",
+            "fieldtype": "Check",
+            "label": "Enable Automatic Reminders"
+        },
+        {
+            "default": "3",
+            "fieldname": "default_follow_up_days",
+            "fieldtype": "Int",
+            "label": "Default Follow-up Days"
+        },
+        {
+            "fieldname": "reminder_settings_section",
+            "fieldtype": "Section Break",
+            "label": "Reminder Settings"
+        },
+        {
+            "fieldname": "priority_thresholds_section",
+            "fieldtype": "Section Break",
+            "label": "Priority Calculation Thresholds"
+        },
+        {
+            "default": "80",
+            "fieldname": "critical_priority_percentage",
+            "fieldtype": "Percent",
+            "label": "Critical Priority Threshold (%)"
+        },
+        {
+            "default": "50",
+            "fieldname": "high_priority_percentage",
+            "fieldtype": "Percent",
+            "label": "High Priority Threshold (%)"
+        },
+        {
+            "default": "25",
+            "fieldname": "medium_priority_percentage",
+            "fieldtype": "Percent",
+            "label": "Medium Priority Threshold (%)"
+        },
+        {
+            "fieldname": "column_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "7",
+            "fieldname": "critical_overdue_days",
+            "fieldtype": "Int",
+            "label": "Critical if Overdue by (Days)"
+        },
+        {
+            "default": "3",
+            "fieldname": "high_overdue_days",
+            "fieldtype": "Int",
+            "label": "High if Overdue by (Days)"
+        },
+        {
+            "fieldname": "escalation_settings_section",
+            "fieldtype": "Section Break",
+            "label": "Escalation & Notification Settings"
+        },
+        {
+            "default": "1",
+            "fieldname": "auto_escalate_enabled",
+            "fieldtype": "Check",
+            "label": "Enable Auto Escalation"
+        },
+        {
+            "default": "1",
+            "fieldname": "send_daily_digest",
+            "fieldtype": "Check",
+            "label": "Send Daily Reminder Digest"
+        },
+        {
+            "fieldname": "notification_settings_section",
+            "fieldtype": "Section Break"
+        },
+        {
+            "default": "1",
+            "fieldname": "enable_email_notifications",
+            "fieldtype": "Check",
+            "label": "Enable Email Notifications"
+        },
+        {
+            "fieldname": "digest_recipients",
+            "fieldtype": "Small Text",
+            "label": "Daily Digest Recipients",
+            "description": "Comma-separated email addresses"
+        },
+        {
+            "fieldname": "notification_routing_rules",
+            "fieldtype": "Table",
+            "label": "Notification Routing Rules",
+            "options": "Notification Recipient Rule"
+        }
+    ],
+    "issingle": 1,
+    "module": "Purchase Enhancements",
+    "name": "Purchase Enhancement Settings",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "track_changes": 1
+}
+

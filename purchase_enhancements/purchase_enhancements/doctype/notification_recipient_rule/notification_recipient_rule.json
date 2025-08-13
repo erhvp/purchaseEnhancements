@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-05 01:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "priority",
+  "reminder_level",
+  "recipient_role"
+ ],
+ "fields": [
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "\nLow\nMedium\nHigh\nCritical"
+  },
+  {
+   "fieldname": "reminder_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Reminder Level",
+   "options": "\nFirst\nSecond\nFinal"
+  },
+  {
+   "fieldname": "recipient_role",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Recipient Role",
+   "options": "Role",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "module": "Purchase Enhancements",
+ "name": "Notification Recipient Rule",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
+
