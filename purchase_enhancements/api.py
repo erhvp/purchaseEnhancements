@@ -11,7 +11,7 @@ def get_item_project_history(item_code, project, company, limit=5):
         if not all([item_code, project, company]):
             return []
 
-        settings = frappe.get_cached_doc("Purchase Enhancement Settings")
+        settings = frappe.get_single("Purchase Enhancement Settings")
         if not settings.enable_purchase_history:
             return []
 
