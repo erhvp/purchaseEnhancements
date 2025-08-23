@@ -3,7 +3,7 @@ from frappe.utils import cint
 import traceback  # Added for error logging
 
 @frappe.whitelist()
-def get_item_project_history(item_code, project, company, supplier, limit=5):
+def get_item_project_history(item_code, project, company, limit=5):
     """
     Fetches purchase history with enhanced error handling and settings integration.
     """
@@ -45,8 +45,7 @@ def get_item_project_history(item_code, project, company, supplier, limit=5):
                 po.company = %s
             ORDER BY 
                 po.transaction_date DESC
-            LIMIT %s
-        """, (item_code, project, company, limit), as_dict=True)
+        """, (item_code, project, company), as_dict=True)
 
         for item in history:
             item['pending_qty'] = (item.get('qty', 0) - item.get('received_qty', 0))
