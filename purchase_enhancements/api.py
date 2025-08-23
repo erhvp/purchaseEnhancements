@@ -8,7 +8,7 @@ def get_item_project_history(item_code, project, company, limit=5):
     Fetches purchase history with enhanced error handling and settings integration.
     """
     try:
-        if not all([item_code, project, company, supplier]):
+        if not all([item_code, project, company]):
             return []
 
         settings = frappe.get_cached_doc("Purchase Enhancement Settings")
