@@ -18,7 +18,7 @@ def get_item_project_history(item_code, project, company, limit=5):
         cache_duration = settings.history_cache_duration or 600
         limit = cint(limit) or settings.max_history_items or 5
 
-        cache_key = f"item_history_{item_code}_{project}_{company}_{supplier}_{limit}"
+        cache_key = f"item_history_{item_code}_{project}_{company}_{limit}"
         cached_result = frappe.cache().get_value(cache_key)
 
         if cached_result:
