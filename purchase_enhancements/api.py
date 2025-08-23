@@ -29,26 +29,25 @@ def get_item_project_history(item_code, project, company, limit=5):
         	po.transaction_date,
         	po.supplier,
         	poi.item_code,
-        poi.project,
-        poi.qty,
-        poi.rate,
-        poi.amount,
-        poi.received_qty
-    	FROM 
-        `tabPurchase Order` po
-    	INNER JOIN 
-        `tabPurchase Order Item` poi ON po.name = poi.parent
-    	WHERE 
-        poi.item_code = %s AND
-        poi.project = %s AND
-        po.supplier = %s AND
-        po.company = %s
-    	ORDER BY 
-        po.transaction_date DESC
-    	LIMIT %s
-		""", (item_code, project, supplier, company, limit), as_dict=True)
+        	poi.project,
+        	poi.qty,
+        	poi.rate,
+        	poi.amount,
+        	poi.received_qty
+    		FROM 
+        	`tabPurchase Order` po
+    		INNER JOIN 
+        	`tabPurchase Order Item` poi ON po.name = poi.parent
+    		WHERE 
+        	poi.item_code = %s AND
+        	poi.project = %s AND
+        	po.company = %s
+    		ORDER BY 
+        	po.transaction_date DESC
+    		LIMIT %s
+			""", (item_code, project, company, limit), as_dict=True)
 
-
+			#po.supplier = %s AND
         for item in history:
             item['pending_qty'] = (item.get('qty', 0) - item.get('received_qty', 0))
             item['delivery_status'] = 'Completed' if item['pending_qty'] <= 0 else 'Pending'
