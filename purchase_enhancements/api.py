@@ -45,5 +45,5 @@ def get_item_project_history(item_code, project, company, limit=5):
 
     except Exception as e:
         frappe.log_error(f"Error fetching purchase history: {str(e)}", "Purchase History API")
-        return []
+        return {"error": str(e), "trace": traceback.format_exc()}
 
