@@ -23,18 +23,31 @@ def get_item_project_history(item_code, project, company, limit=5):
         if cached_result:
             return cached_result
 
-        history = frappe.get_all(
-            "Purchase Order Item",
-            filters={
-                "item_code": item_code,
-                "project": project,
-                "docstatus": 1,
-                "company": company
-            },
-            fields=["parent", "creation", "qty", "rate", "amount", "supplier", "received_qty"],
-            order_by="creation desc",
-            limit=limit
-        )
+        history = frappe.db.sql("""
+    		SELECT 
+        	po.name AS purchase_order,
+        	po.transaction_date,
+        	po.supplier,
+        	poi.item_code,
+        poi.project,
+        poi.qty,
+        poi.rate,
+        poi.amount,
+        poi.received_qty
+    	FROM 
+        `tabPurchase Order` po
+    	INNER JOIN 
+        `tabPurchase Order Item` poi ON po.name = poi.parent
+    	WHERE 
+        poi.item_code = %s AND
+        poi.project = %s AND
+        po.supplier = %s AND
+        po.company = %s
+    	ORDER BY 
+        po.transaction_date DESC
+    	LIMIT %s
+		""", (item_code, project, supplier, company, limit), as_dict=True)
+
 
         for item in history:
             item['pending_qty'] = (item.get('qty', 0) - item.get('received_qty', 0))
@@ -44,6 +57,11 @@ def get_item_project_history(item_code, project, company, limit=5):
         return history
 
     except Exception as e:
-        frappe.log_error(f"Error fetching purchase history: {str(e)}", "Purchase History API")
+        #frappe.log_error(f"Error fetching purchase history: {str(e)}", "Purchase History API")
+		frappe.log_error(
+            message=traceback.format_exc(),
+            title="get_item_project_history - Full Traceback"
+        )
+        #raise
         return {"error": str(e), "trace": traceback.format_exc()}
 
