@@ -5,6 +5,9 @@ app_description = "Purchase Enhancements"
 app_email = "abc@gmail.com"
 app_license = "gpl-3.0"
 
+
+app_include_js = "/assets/purchase_enhancements/js/global_ui_hider.js"
+
 # Apps
 # ------------------
 
