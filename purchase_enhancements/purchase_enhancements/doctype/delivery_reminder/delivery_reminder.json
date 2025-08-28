@@ -54,8 +54,7 @@
    "fieldname": "supplier",
    "fieldtype": "Link",
    "label": "Supplier",
-   "options": "Supplier",
-   "read_only": 1
+   "options": "Supplier"
   },
   {
    "fieldname": "item_code",
@@ -63,14 +62,12 @@
    "in_list_view": 1,
    "label": "Item Code",
    "options": "Item",
-   "reqd": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "item_name",
    "fieldtype": "Data",
-   "label": "Item Name",
-   "read_only": 1
+   "label": "Item Name"
   },
   {
    "fieldname": "details_section",
@@ -82,23 +79,20 @@
    "fieldtype": "Link",
    "label": "Purchase Order",
    "options": "Purchase Order",
-   "reqd": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "purchase_order_item",
    "fieldtype": "Link",
    "label": "Purchase Order Item",
-   "options": "Purchase Order Item",
-   "read_only": 1
+   "options": "Purchase Order Item"
   },
   {
    "fieldname": "pending_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Pending Qty",
-   "reqd": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "column_break_11",
@@ -118,8 +112,7 @@
    "fieldname": "triggering_receipt",
    "fieldtype": "Link",
    "label": "Triggering Receipt",
-   "options": "Purchase Receipt",
-   "read_only": 1
+   "options": "Purchase Receipt"
   },
   {
    "fieldname": "audit_section",
@@ -130,8 +123,7 @@
    "default": "0",
    "fieldname": "auto_created",
    "fieldtype": "Check",
-   "label": "Auto Created",
-   "read_only": 1
+   "label": "Auto Created"
   }
  ],
  "index_web_pages_for_search": 1,
