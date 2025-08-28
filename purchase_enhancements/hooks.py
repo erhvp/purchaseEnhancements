@@ -8,6 +8,29 @@ app_license = "gpl-3.0"
 
 app_include_js = "/assets/purchase_enhancements/js/global_ui_hider.js"
 
+doc_events = {
+    "Purchase Receipt": {
+        "on_submit": "purchase_enhancements.reminder_service.update_reminders_for_receipt"
+    },
+    "Purchase Invoice": {
+        "on_submit": "purchase_enhancements.reminder_service.update_reminders_for_receipt"
+    },
+    "Purchase Order": {
+        "on_cancel": "purchase_enhancements.reminder_service.handle_po_cancellation",
+        "on_submit": "purchase_enhancements.reminder_service.clear_item_history_cache"
+    }
+}
+
+scheduler_events = {
+    "daily": [
+        "purchase_enhancements.reminder_service.escalate_overdue_reminders",
+        "purchase_enhancements.reminder_service.send_daily_reminder_digest"
+    ],
+    "weekly": [
+        "purchase_enhancements.reminder_service.cleanup_closed_reminders"
+    ]
+}
+
 # Apps
 # ------------------
 
