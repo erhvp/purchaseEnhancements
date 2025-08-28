@@ -2,24 +2,30 @@ import frappe
 from frappe import _
 from frappe.utils import nowdate, add_days, flt
 
+@frappe.whitelist()
 def update_reminders_for_receipt(doc, method=None):
     if not ReminderManager().settings.get("enable_auto_reminders"): return
     ReminderManager()._process_document(doc)
-
+	
+@frappe.whitelist()
 def handle_po_cancellation(doc, method=None):
     ReminderManager()._close_reminders_for_po(doc)
 
+@frappe.whitelist()
 def clear_item_history_cache(doc, method=None):
     ReminderManager()._clear_cache_for_po(doc)
 
+@frappe.whitelist()
 def escalate_overdue_reminders():
     if not ReminderManager().settings.get("auto_escalate_enabled"): return
     ReminderManager()._escalate_overdue()
-    
+
+@frappe.whitelist()
 def send_daily_reminder_digest():
     if not ReminderManager().settings.get("send_daily_digest"): return
     ReminderManager()._send_daily_digest()
 
+@frappe.whitelist()
 def cleanup_closed_reminders():
     if not ReminderManager().settings.get("auto_cleanup_enabled"): return
     ReminderManager()._cleanup_closed()
