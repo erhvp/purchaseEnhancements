@@ -4,7 +4,7 @@ from frappe.utils import nowdate, add_days, flt
 
 def update_reminders_for_receipt(doc, method=None):
     if not ReminderManager().settings.get("enable_auto_reminders"): return
-    	ReminderManager()._process_document(doc)
+    ReminderManager()._process_document(doc)
 
 def handle_po_cancellation(doc, method=None):
     ReminderManager()._close_reminders_for_po(doc)
@@ -14,15 +14,15 @@ def clear_item_history_cache(doc, method=None):
 
 def escalate_overdue_reminders():
     if not ReminderManager().settings.get("auto_escalate_enabled"): return
-        ReminderManager()._escalate_overdue()
+    ReminderManager()._escalate_overdue()
     
 def send_daily_reminder_digest():
     if not ReminderManager().settings.get("send_daily_digest"): return
-        ReminderManager()._send_daily_digest()
+    ReminderManager()._send_daily_digest()
 
 def cleanup_closed_reminders():
     if not ReminderManager().settings.get("auto_cleanup_enabled"): return
-        ReminderManager()._cleanup_closed()
+    ReminderManager()._cleanup_closed()
 
 class ReminderManager:
     """
