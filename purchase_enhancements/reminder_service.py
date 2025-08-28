@@ -229,8 +229,9 @@ class ReminderManager:
                 "document_type": "Delivery Reminder",
                 "document_name": reminder_list[0].name, # Link to the first one
                 "for_user": owner,
-                "email_content": content})
-			doc.insert(ignore_permissions=True)
+                "email_content": content
+			})
+			log.insert(ignore_permissions=True)
 
     # --- Other Helpers ---
     def _load_settings(self):
