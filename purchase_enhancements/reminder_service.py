@@ -223,13 +223,14 @@ class ReminderManager:
                 content += f"<li><b>{r.item_code}</b>: {r.pending_qty} units pending for PO <a href='/app/purchase-order/{r.purchase_order}'>{r.purchase_order}</a></li>"
             content += "</ul>"
 
-            frappe.new_doc("Notification Log", {
+            log = frappe.new_doc("Notification Log")
+			log.update({
                 "subject": subject,
                 "document_type": "Delivery Reminder",
                 "document_name": reminder_list[0].name, # Link to the first one
                 "for_user": owner,
-                "email_content": content
-            }).insert(ignore_permissions=True)
+                "email_content": content})
+			doc.insert(ignore_permissions=True)
 
     # --- Other Helpers ---
     def _load_settings(self):
