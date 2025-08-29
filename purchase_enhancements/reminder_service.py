@@ -304,7 +304,7 @@ class ReminderManager:
 
             reminder.save(ignore_permissions=True)
 
-            reminder.add_comment("Escalated", text=f"Reminder level escalated to {new_level}.")
+            reminder.add_comment("Info", text=f"Reminder level escalated to {new_level}.")
 
         
 
