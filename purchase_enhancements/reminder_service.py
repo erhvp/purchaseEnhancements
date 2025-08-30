@@ -254,7 +254,7 @@ class ReminderManager:
 
         doc = frappe.get_doc("Delivery Reminder", reminder_name)
 
-        doc.add_comment("Updated", text=f"Pending qty set to {pending_qty} by {triggering_doc.doctype} {triggering_doc.name}")
+        doc.add_comment("Info", text=f"Pending qty set to {pending_qty} by {triggering_doc.doctype} {triggering_doc.name}")
 
 
 
@@ -264,7 +264,7 @@ class ReminderManager:
 
         doc = frappe.get_doc("Delivery Reminder", reminder_name)
 
-        doc.add_comment("Auto-Closed", text=reason)
+        doc.add_comment("Info", text=reason)
 
 
 
